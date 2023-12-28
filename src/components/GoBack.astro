@@ -1,0 +1,26 @@
+---
+import IconArrowBackUp from "./icons/IconArrowBackUp.astro";
+interface Props {
+  variant: "green" | "white";
+  position?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
+  href: string;
+}
+
+const positionClass = {
+  "top-left": "top-5 left-5",
+  "top-right": "top-5 right-5",
+  "bottom-left": "bottom-5 left-5",
+  "bottom-right": "bottom-5 right-5",
+};
+
+const { variant, position, href } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`fixed h-10 w-10 rounded-full flex items-center justify-center ${
+    variant === "green" ? "bg-greenPrimary" : "bg-white"
+  } ${positionClass[position ?? "top-right"]} z-50`}
+>
+  <IconArrowBackUp class="h-6 w-6 text-white mx-auto my-auto" />
+</a>
