@@ -1,0 +1,28 @@
+---
+interface Props {
+  subtitle?: string;
+}
+
+const { subtitle } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Ian Ferrero {subtitle && `- ${subtitle}`}</title>
+    <meta
+      name="description"
+      content="My portfolio website and blog where I write about web development, design, and other things."
+    />
+    <meta name="author" content="Ian Ferrero" />
+    <meta name="keywords" content="Ian, Ian Ferrero, Web Developer" />
+  </head>
+  <body
+    class="px-4 max-w-[782px] mx-auto bg-whitePrimary dark:bg-blackPrimary py-5"
+  >
+    <slot />
+  </body>
+</html>

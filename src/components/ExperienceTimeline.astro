@@ -1,0 +1,83 @@
+---
+interface Experience {
+  title: string;
+  company: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  tags: string[];
+}
+
+const EXPERIENCE: Experience[] = [
+  {
+    startDate: "2022-02-05",
+    endDate: "2023-09-28",
+    title: "Fullstack Developer",
+    company: "Arconix",
+    description:
+      "Led critical initiatives as a FullStack Developer at Arconix, driving the development of an innovative website for online video game events. Played a key role in conceiving and implementing technical solutions within an agile framework, covering both front-end and back-end aspects. Contributed to a seamless, user-centric experience and gained valuable insights into startup dynamics, demonstrating a commitment to cutting-edge solutions.",
+    tags: ["NextJS", "TypeScript", "Tailwind CSS", "MongoDB"],
+  },
+  {
+    startDate: "2019-06-05",
+    endDate: "Now",
+    title: "Fullstack Developer",
+    company: "Freelance",
+    description:
+      "Led critical initiatives as a FullStack Developer at Arconix, driving the development of an innovative website for online video game events. Played a key role in conceiving and implementing technical solutions within an agile framework, covering both front-end and back-end aspects. Contributed to a seamless, user-centric experience and gained valuable insights into startup dynamics, demonstrating a commitment to cutting-edge solutions.",
+    tags: [],
+  },
+];
+
+const formatDate = (date: string) => {
+  if (date === "Now") return "Now";
+  const [year, month] = date.split("-");
+  return `${month}/${year}`;
+};
+
+const experienceTime = (startDate: string, endDate: string) => {
+  if (endDate === "Now") {
+    const [startYear, startMonth] = startDate.split("-");
+    const now = new Date();
+    const years = now.getFullYear() - parseInt(startYear);
+    const months = now.getMonth() - parseInt(startMonth);
+    return `${years} years ${months} months`;
+  }
+  const [startYear, startMonth] = startDate.split("-");
+  const [endYear, endMonth] = endDate.split("-");
+
+  const years = parseInt(endYear) - parseInt(startYear);
+  const months = parseInt(endMonth) - parseInt(startMonth);
+
+  return `${years} years ${months} months`;
+};
+---
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700">
+  {
+    EXPERIENCE.reverse().map((Exp, i) => (
+      <li class="mb-10 ms-4">
+        <div class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 bg-greenPrimary " />
+        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+          {formatDate(Exp.startDate)} - {formatDate(Exp.endDate)}
+        </time>
+        <span class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+          ({experienceTime(Exp.startDate, Exp.endDate)})
+        </span>
+        <h3 class="text-lg font-semibold text-white">
+          {Exp.company} - {Exp.title}
+        </h3>
+        <p class="mb-4 text-base font-normal text-white/60 dark:text-gray-400">
+          {Exp.description}
+        </p>
+        <div class="flex flex-wrap gap-2">
+          {Exp.tags.map((tag) => (
+            <span class="px-2 py-1 text-xs rounded-full bg-greenPrimary text-black font-semibold">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </li>
+    ))
+  }
+</ol>
