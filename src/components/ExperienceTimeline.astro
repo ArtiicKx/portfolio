@@ -73,21 +73,21 @@ const experienceTime = (startDate: string, endDate: string) => {
 };
 ---
 
-<ol class="relative border-s border-gray-200 dark:border-gray-700">
+<ol class="relative border-s border-gray-700">
   {
     EXPERIENCE.reverse().map((Exp, i) => (
       <li class="mb-10 ms-4">
         <div class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 bg-greenPrimary " />
-        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+        <time class="mb-1 text-sm font-normal leading-none text-gray-500">
           {formatDate(Exp.startDate)} - {formatDate(Exp.endDate)}
         </time>
-        <span class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+        <span class="mb-1 text-sm font-normal leading-none text-gray-500">
           ({experienceTime(Exp.startDate, Exp.endDate)})
         </span>
         <h3 class="text-lg font-semibold text-white">
           {Exp.company} - {Exp.title}
         </h3>
-        <p class="mb-4 text-base font-normal text-white/60 dark:text-gray-400">
+        <p class="mb-4 text-base font-normal text-gray-400">
           {Exp.description}
         </p>
         <div class="flex flex-wrap gap-2">

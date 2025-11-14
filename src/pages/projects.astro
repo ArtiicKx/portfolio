@@ -14,7 +14,7 @@ import GoBack from "../components/GoBack.astro";
     {
       [...PROJECTS_DATA].map((project, i) => (
         <div
-          class={`row-span-1 rounded-xl border-2 border-slate-400/10 bg-neutral-100 dark:bg-neutral-900 overflow-hidden
+          class={`row-span-1 rounded-xl border-2 border-slate-400/10 bg-neutral-900 overflow-hidden
             ${i === 2 || i === 5 || i === 4 || i === 9 ? "md:row-span-2" : ""}
              ${
                i === 3 || i === 6 || i === 5 || i === 14 ? "md:col-span-2" : ""
